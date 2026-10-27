@@ -1,0 +1,17 @@
+# Données : régénérées par les notebooks 01, 03 et 08
+data/
+*.parquet
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Éditeurs et système
+.vscode/
+.idea/
+.DS_Store

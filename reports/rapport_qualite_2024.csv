@@ -1,0 +1,8 @@
+contrôle,nb_lignes,règle,part_%
+Doublons sur la clé,0,Aucune suppression nécessaire si 0,0.0
+Coordonnées invalides ou absentes,1196,Mises à NA + flag geo_valid,1.07
+Vitesse affichée irréaliste,262,Valeur conservée + flag speed_valid,0.23
+Blessures non renseignées,249,Gravité à NA + flag injury_info_available,0.22
+Signalement avant l'accident,0,Flag delay_valid,0.0
+Météo inconnue,8826,Regroupée en UNKNOWN,7.88
+Luminosité inconnue,7093,Regroupée en UNKNOWN,6.33
