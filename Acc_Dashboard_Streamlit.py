@@ -164,7 +164,7 @@ with onglet1:
     serie["moyenne mobile 7 jours"] = serie["accidents"].rolling(7, center=True).mean()
     fig = px.line(serie, labels={"value": "Accidents par jour", "crash_date": "", "variable": ""})
     fig.update_traces(selector=dict(name="accidents"), line=dict(width=1), opacity=0.4)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     col_a, col_b = st.columns(2)
 
@@ -174,7 +174,7 @@ with onglet1:
         fig = px.bar(x=par_heure.index, y=par_heure.values,
                      labels={"x": "Heure", "y": "Nombre d'accidents"})
         fig.update_traces(marker_color="steelblue")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col_b:
         st.subheader("Rythme de la semaine")
@@ -182,7 +182,7 @@ with onglet1:
                   .reindex(ORDRE_JOURS))
         fig = px.imshow(heat, color_continuous_scale="YlOrRd", aspect="auto",
                         labels={"x": "Heure", "y": "", "color": "Accidents"})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 
 # ---------------------------------------------------------------------------
@@ -203,7 +203,7 @@ with onglet2:
                          center={"lat": 41.84, "lon": -87.68}, zoom=9.6,
                          map_style="open-street-map", height=620)
     fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), coloraxis_showscale=False)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.info("Une zone qui concentre beaucoup d'accidents n'est pas forcément plus dangereuse : "
             "elle est souvent simplement plus fréquentée. Sans données de trafic, "
@@ -223,7 +223,7 @@ with onglet2:
                          labels={"n": "Nombre d'accidents", "y": "Secteur"},
                          title="Top 10 par nombre d'accidents")
             fig.update_traces(marker_color="steelblue")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
         with col_b:
             top_t = secteurs.nlargest(10, "taux").sort_values("taux")
             fig = px.bar(top_t, x="taux", y=top_t.index, orientation="h",
@@ -232,7 +232,7 @@ with onglet2:
                          title="Top 10 par taux d'accidents graves")
             fig.update_traces(marker_color="crimson")
             fig.add_vline(x=taux_global, line_dash="dash", annotation_text="Moyenne")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         communs = set(top_v.index) & set(top_t.index)
         st.caption(f"Secteurs présents dans les deux classements : {', '.join(sorted(communs)) or 'aucun'}.")
@@ -272,7 +272,7 @@ with onglet3:
         fig.update_traces(marker_color="steelblue")
         fig.add_vline(x=taux_global, line_dash="dash", line_color="crimson",
                       annotation_text=f"Moyenne : {taux_global:.2f} %")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
         st.caption("Barres d'erreur : intervalle de confiance à 95 % (méthode de Wilson). "
                    "Les modalités inconnues et les groupes sous l'effectif minimum sont exclus.")
 
